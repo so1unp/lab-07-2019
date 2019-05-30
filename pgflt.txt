@@ -1,0 +1,13 @@
+﻿    int a;
+    char *mem;
+    
+    case T_PGFLT:
+        a = PGROUNDDOWN(rcr2());
+
+        mem = kalloc();
+
+        memset(mem, 0, PGSIZE);
+
+        mappages(proc->pgdir, (char*)a, PGSIZE, V2P(mem), PTE_W|PTE_U);
+
+        break;
